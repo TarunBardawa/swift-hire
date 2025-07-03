@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoginScreen: View {
     
+    @Environment(RouterPath.self) private var routerPath
+    
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var rememberMe: Bool = false
@@ -49,7 +51,7 @@ struct LoginScreen: View {
             .padding(.horizontal, 24)
             
             AppButton(title: "LOGIN") {
-                
+                routerPath.navigate(to: .loggedIn)
             }
             .padding(.horizontal, 24)
             .padding(.top)
@@ -98,6 +100,7 @@ struct LoginScreen: View {
             Spacer()
         }
         .background(.viewBackground)
+        .navigationBarBackButtonHidden()
     }
 }
 

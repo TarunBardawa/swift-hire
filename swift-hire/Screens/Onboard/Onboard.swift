@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Onboard: View {
+    
+    @Environment(RouterPath.self) private var routerPath
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -16,10 +19,12 @@ struct Onboard: View {
                     .font(.title2)
                     .padding(.trailing)
             }
+            
             Image(.onboard)
                 .resizable()
                 .scaledToFit()
-                .frame(width: .infinity, height: 400)
+                .frame(height: 380)
+                .frame(maxWidth: .infinity)
             
             Spacer()
             
@@ -40,7 +45,7 @@ struct Onboard: View {
                 Spacer()
                 
                 Button {
-                    
+                    routerPath.navigate(to: .login)
                 } label: {
                     Image(systemName: "arrow.right")
                         .font(.largeTitle)

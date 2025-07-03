@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SeeAllRecentJobsScreen: View {
     
-    @StateObject private var viewModel = SavedJobsViewModel()
+    @StateObject private var viewModel = BookmarkViewModel()
     
     var body: some View {
         List {

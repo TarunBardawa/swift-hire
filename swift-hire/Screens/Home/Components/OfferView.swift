@@ -37,8 +37,10 @@ struct OfferView: View {
                     .scaledToFit()
             }
         }
-        .frame(width: .infinity, height: 180)
+        .frame(height: 180)
+        .frame(maxWidth: .infinity)
         .clipShape(RoundedRectangle(cornerRadius: 5))
         .listRowSeparator(.hidden)
+        .listRowBackground(Color.clear)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  SavedJobsViewModel.swift
+//  BookmarkViewModel.swift
 //  swift-hire
 //
 //  Created by Tarun Bardawa on 03/07/25.
@@ -8,10 +8,10 @@
 import SwiftUI
 
 @MainActor
-class SavedJobsViewModel: ObservableObject {
+class BookmarkViewModel: ObservableObject {
     @Published var savedJobs: [Job] = [
         Job(
-            companyLogo: "google.logo",
+            companyLogo: "googleIcon",
             logoBackgroundColor: Color.yellow,
             jobTitle: "Product Designer",
             location: "California, USA",
@@ -21,7 +21,7 @@ class SavedJobsViewModel: ObservableObject {
             isBookmarked: false
         ),
         Job(
-            companyLogo: "dribbble.logo",
+            companyLogo: "dribbbleIcon",
             logoBackgroundColor: Color.pink,
             jobTitle: "Software Engineer",
             location: "Redmond, WA",

@@ -23,7 +23,7 @@ struct MainApp: App {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.black)
-            .ignoresSafeArea()
+//            .ignoresSafeArea()
             .task {
                 guard showSplashScreen else { return }
                 try? await Task.sleep(for: .seconds(0.5))

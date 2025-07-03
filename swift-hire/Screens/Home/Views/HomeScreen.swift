@@ -15,8 +15,10 @@ struct Home: View {
             HeaderView()
             
             OfferView()
+                .listRowInsets(EdgeInsets(top: 5, leading: 16, bottom: 0, trailing: 16))
             
             FindYourJobView()
+                .listRowInsets(EdgeInsets(top: 5, leading: 16, bottom: 0, trailing: 16))
             
             HStack {
                 Text("Recent Job List")
@@ -42,6 +44,7 @@ struct Home: View {
             }
         }
         .listStyle(.plain)
+        .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  SavedJobsScreen.swift
+//  BookmarkScreen.swift
 //  swift-hire
 //
 //  Created by Tarun Bardawa on 03/07/25.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct SavedJobsScreen: View {
+struct BookmarkScreen: View {
     
-    @StateObject private var viewModel = SavedJobsViewModel()
+    @StateObject private var viewModel = BookmarkViewModel()
     
     var body: some View {
         List {
@@ -26,5 +26,5 @@ struct SavedJobsScreen: View {
 
 
 #Preview {
-    SavedJobsScreen()
+    BookmarkScreen()
 }

@@ -10,9 +10,8 @@ import SwiftUI
 struct MessagesScreen: View {
     var body: some View {
         VStack(spacing: 12) {
-            Image(systemName: "envelope")
-                .font(.system(size: 60))
-                .foregroundColor(.gray)
+            
+            Image(.noChat)
             
             Text("No Messages")
                 .font(.title)

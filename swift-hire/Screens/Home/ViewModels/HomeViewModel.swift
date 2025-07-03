@@ -11,7 +11,7 @@ import SwiftUI
 class HomeViewModel: ObservableObject {
     @Published var recentJobs: [Job] = [
         Job(
-            companyLogo: "google.logo", // Replace with your asset or SF Symbol
+            companyLogo: "googleIcon",
             logoBackgroundColor: Color.yellow,
             jobTitle: "Product Designer",
             location: "California, USA",
@@ -21,7 +21,7 @@ class HomeViewModel: ObservableObject {
             isBookmarked: false
         ),
         Job(
-            companyLogo: "dribbble.logo",
+            companyLogo: "dribbbleIcon",
             logoBackgroundColor: Color.pink,
             jobTitle: "Software Engineer",
             location: "Redmond, WA",
@@ -31,7 +31,7 @@ class HomeViewModel: ObservableObject {
             isBookmarked: false
         ),
         Job(
-            companyLogo: "twitter.logo",
+            companyLogo: "twitterIcon",
             logoBackgroundColor: Color.blue,
             jobTitle: "Data Scientist",
             location: "Austin, TX",
@@ -41,7 +41,7 @@ class HomeViewModel: ObservableObject {
             isBookmarked: false
         ),
         Job(
-            companyLogo: "facebook.logo",
+            companyLogo: "facebookIcon",
             logoBackgroundColor: Color(.sRGB, red: 0.25, green: 0.33, blue: 0.63, opacity: 1),
             jobTitle: "UX Designer",
             location: "Seattle, WA",
@@ -51,7 +51,7 @@ class HomeViewModel: ObservableObject {
             isBookmarked: false
         ),
         Job(
-            companyLogo: "apple.logo",
+            companyLogo: "appleIcon",
             logoBackgroundColor: Color.gray,
             jobTitle: "iOS Developer",
             location: "Cupertino, CA",
@@ -61,7 +61,7 @@ class HomeViewModel: ObservableObject {
             isBookmarked: false
         ),
         Job(
-            companyLogo: "amazon.logo",
+            companyLogo: "dribbbleIcon",
             logoBackgroundColor: Color.orange,
             jobTitle: "Backend Engineer",
             location: "New York, NY",
@@ -71,7 +71,7 @@ class HomeViewModel: ObservableObject {
             isBookmarked: false
         ),
         Job(
-            companyLogo: "linkedin.logo",
+            companyLogo: "linkedin",
             logoBackgroundColor: Color.blue.opacity(0.7),
             jobTitle: "Frontend Developer",
             location: "San Francisco, CA",
@@ -81,7 +81,7 @@ class HomeViewModel: ObservableObject {
             isBookmarked: false
         ),
         Job(
-            companyLogo: "slack.logo",
+            companyLogo: "google",
             logoBackgroundColor: Color.purple,
             jobTitle: "QA Engineer",
             location: "Denver, CO",
@@ -91,7 +91,7 @@ class HomeViewModel: ObservableObject {
             isBookmarked: false
         ),
         Job(
-            companyLogo: "adobe.logo",
+            companyLogo: "twitterIcon",
             logoBackgroundColor: Color.red,
             jobTitle: "UI Designer",
             location: "Los Angeles, CA",
@@ -101,7 +101,7 @@ class HomeViewModel: ObservableObject {
             isBookmarked: false
         ),
         Job(
-            companyLogo: "spotify.logo",
+            companyLogo: "facebookIcon",
             logoBackgroundColor: Color.green,
             jobTitle: "DevOps Engineer",
             location: "Boston, MA",
