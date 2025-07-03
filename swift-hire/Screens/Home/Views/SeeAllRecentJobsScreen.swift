@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SeeAllRecentJobsScreen: View {
     
+    @Environment(RouterPath.self) private var routerPath
     @StateObject private var viewModel = BookmarkViewModel()
     
     var body: some View {
@@ -21,6 +22,21 @@ struct SeeAllRecentJobsScreen: View {
             }
         }
         .listStyle(.plain)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                backButton()
+            }
+        }
+    }
+    
+    private func backButton() -> some View {
+        Button {
+            routerPath.goBack()
+        } label: {
+            Image(systemName: "arrow.left")
+                .foregroundColor(.text)
+        }
     }
 }
 

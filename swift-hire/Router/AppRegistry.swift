@@ -19,6 +19,8 @@ extension View {
       case .loggedIn:
           TabNavigator()
               .toolbarVisibility(.hidden, for: .navigationBar)
+      case .recentJobs:
+          SeeAllRecentJobsScreen()
       }
     }
   }

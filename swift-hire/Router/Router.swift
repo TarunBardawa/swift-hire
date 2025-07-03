@@ -12,6 +12,7 @@ public enum RouterDestination: Hashable {
     case onboarding
     case login
     case loggedIn
+    case recentJobs
 }
 
 @MainActor

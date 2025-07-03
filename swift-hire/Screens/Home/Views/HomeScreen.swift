@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Home: View {
+    
+    @Environment(RouterPath.self) private var routerPath
     @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {
@@ -28,12 +30,13 @@ struct Home: View {
                 Spacer()
                 
                 Button {
-                    
+                    routerPath.navigate(to: .recentJobs)
                 } label: {
                     Text("See More")
                         .font(.title3)
                 }
             }
+            .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
             
             ForEach(viewModel.recentJobs) { job in

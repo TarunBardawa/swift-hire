@@ -10,14 +10,14 @@ import SwiftUI
 struct HeaderView: View {
     var body: some View {
         HStack {
-            Text("Hello\nTarun Bardawa")
+            Text("Hello\nJohn Doe")
                 .font(.title2)
                 .foregroundStyle(.darkBlue)
             Spacer()
-            Image(.avatar)
+            Image(.userprofile)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 60, height: 60)
+                .frame(width: 40, height: 40)
                 .clipShape(.circle)
             
         }
