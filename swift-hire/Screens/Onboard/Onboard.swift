@@ -24,13 +24,13 @@ struct Onboard: View {
             Spacer()
             
             Text("Find Your")
-                .font(.title)
+                .font(.largeTitle)
             Text("Dream Job")
-                .font(.title)
+                .font(.largeTitle)
                 .foregroundStyle(.orange)
                 .underline()
-            Text("Here")
-                .font(.title)
+            Text("Here!")
+                .font(.largeTitle)
             
             Text("Explore all the most exciting job roles based on your interest and study major.")
                 .foregroundStyle(.secondary)
