@@ -20,7 +20,8 @@ struct MainApp: App {
                     .environmentObject(authProvider)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.black)
+            .background(.bg)
+            .ignoresSafeArea()
         }
     }
 }

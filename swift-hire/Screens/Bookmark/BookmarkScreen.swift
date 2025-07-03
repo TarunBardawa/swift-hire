@@ -25,6 +25,7 @@ struct BookmarkScreen: View {
             .listStyle(.plain)
             .navigationTitle("Saved Jobs")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarColor(backgroundColor: .white, titleColor: .text)
         }
         .environment(routerPath)
     }

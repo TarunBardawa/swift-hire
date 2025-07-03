@@ -24,6 +24,7 @@ struct Companies: View {
             .padding()
         }
         .background(Color(.systemGray5).edgesIgnoringSafeArea(.all))
+        .navigationBarColor(backgroundColor: Color(.systemGray5), titleColor: .text)
     }
 }
 

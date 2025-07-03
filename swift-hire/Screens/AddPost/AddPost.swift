@@ -6,22 +6,20 @@
 //
 
 import SwiftUI
+import BottomSheet
 
 struct AddPost: View {
     
-    @State private var showBottomSheet: Bool = false
+    @State var bottomSheetPosition: BottomSheetPosition = .absolute(400)
     
     var body: some View {
         VStack {
             Text("")
         }
-        .sheet(isPresented: $showBottomSheet) {
+        .frame(maxHeight: .infinity)
+        .background(.white)
+        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, switchablePositions: [.absolute(400)], content: {
             AddPostSheet()
-                .presentationDetents([.fraction(0.40)])
-                .presentationDragIndicator(.visible)
-        }
-        .onAppear {
-            showBottomSheet = true
-        }
+        })
     }
 }

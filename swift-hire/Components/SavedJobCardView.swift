@@ -12,7 +12,7 @@ struct SavedJobCardView: View {
     let job: Job
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .center) {
                 ZStack {
                     Circle()
@@ -43,9 +43,11 @@ struct SavedJobCardView: View {
             HStack(spacing: 8) {
                 ForEach(job.tags, id: \.self) { tag in
                     Text(tag)
-                        .font(.subheadline)
+                        .font(.system(size: 14))
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
+                        .lineLimit(1)
+                        .allowsTightening(true)
                         .background(Color(.systemGray6))
                         .clipShape(.capsule)
                 }
@@ -59,8 +61,8 @@ struct SavedJobCardView: View {
                 Spacer()
                 
                 Text(job.salary)
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    .font(.headline)
+//                    .fontWeight(.bold)
                     .foregroundColor(Color(.label))
                 Text("/ \(job.timeUnit)")
                     .font(.subheadline)

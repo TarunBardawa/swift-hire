@@ -39,6 +39,9 @@ struct FindYourJobView: View {
         }
         .frame(height: 250)
         .padding(.vertical)
+        .background(Color(.systemGray5))
+        .listRowInsets(EdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16))
+        .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
     }
 }

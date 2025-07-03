@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5C28B5712E1720C300FCA8E7 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 5C28B5702E1720C300FCA8E7 /* BottomSheet */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		5C363D242E14F60E00A4C2AD /* swift-hire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-hire.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C28B5712E1720C300FCA8E7 /* BottomSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = "swift-hire";
 			packageProductDependencies = (
+				5C28B5702E1720C300FCA8E7 /* BottomSheet */,
 			);
 			productName = "swift-hire";
 			productReference = 5C363D242E14F60E00A4C2AD /* swift-hire.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = 5C363D1B2E14F60E00A4C2AD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5C28B56F2E1720C300FCA8E7 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5C363D252E14F60E00A4C2AD /* Products */;
 			projectDirPath = "";
@@ -343,6 +352,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C28B56F2E1720C300FCA8E7 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lucaszischka/BottomSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C28B5702E1720C300FCA8E7 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C28B56F2E1720C300FCA8E7 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5C363D1C2E14F60E00A4C2AD /* Project object */;
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AppButton: View {
     var title: String
+    var backgroundColor: Color = .darkBlue
     var action: () -> Void
     
     var body: some View {
@@ -17,8 +18,8 @@ struct AppButton: View {
                 .font(.headline)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
-                .padding()
-                .background(.darkBlue)
+                .frame(height: 48)
+                .background(backgroundColor)
                 .cornerRadius(8)
         }
     }

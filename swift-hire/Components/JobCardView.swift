@@ -39,8 +39,8 @@ struct JobCardView: View {
             
             HStack(alignment: .firstTextBaseline, spacing: 4) {
                 Text(job.salary)
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    .font(.headline)
+//                    .fontWeight(.bold)
                     .foregroundColor(Color(.label))
                 Text("/ \(job.timeUnit)")
                     .font(.subheadline)

@@ -33,9 +33,10 @@ struct TabNavigator: View {
             
             AddPost()
                 .tabItem {
-                    Image(systemName: "plus.circle.fill")
-                        .font(.largeTitle)
-                        .padding(.top)
+                    Image(.circle)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24, height: 24)
                 }
                 .tag(2)
             

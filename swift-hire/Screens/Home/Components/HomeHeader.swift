@@ -21,6 +21,9 @@ struct HeaderView: View {
                 .clipShape(.circle)
             
         }
+        .background(Color(.systemGray5))
+        .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 10, trailing: 16))
+        .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
     }
 }

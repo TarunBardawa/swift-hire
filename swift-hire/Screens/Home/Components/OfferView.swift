@@ -37,6 +37,7 @@ struct OfferView: View {
                     .scaledToFit()
             }
         }
+        .background(Color(.systemGray5))
         .frame(height: 180)
         .frame(maxWidth: .infinity)
         .clipShape(RoundedRectangle(cornerRadius: 5))
