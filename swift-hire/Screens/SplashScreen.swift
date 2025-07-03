@@ -10,7 +10,11 @@ import SwiftUI
 struct SplashScreen: View {
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
+            Image(.logo)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100)
             Text("Jobspot")
                 .font(.title)
                 .fontWeight(.semibold)
