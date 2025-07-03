@@ -10,27 +10,17 @@ import SwiftUI
 @main
 struct MainApp: App {
     
+    @StateObject var authProvider = AuthProvider()
     @State private var showSplashScreen: Bool = true
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-//            ZStack {
-//                if showSplashScreen {
-//                    SplashScreen()
-//                } else {
-//                    ContentView()
-//                }
-//            }
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            .background(.black)
-//            .task {
-//                guard showSplashScreen else { return }
-//                try? await Task.sleep(for: .seconds(0.5))
-//                withAnimation(.smooth(duration: 0.5)) {
-//                    showSplashScreen = false
-//                }
-//            }
+            ZStack {
+                AppRoot()
+                    .environmentObject(authProvider)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.black)
         }
     }
 }

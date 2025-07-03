@@ -9,46 +9,50 @@ import SwiftUI
 
 struct Home: View {
     
-    @Environment(RouterPath.self) private var routerPath
     @StateObject private var viewModel = HomeViewModel()
+    @State private var routerPath = RouterPath()
     
     var body: some View {
-        List {
-            HeaderView()
-            
-            OfferView()
-                .listRowInsets(EdgeInsets(top: 5, leading: 16, bottom: 0, trailing: 16))
-            
-            FindYourJobView()
-                .listRowInsets(EdgeInsets(top: 5, leading: 16, bottom: 0, trailing: 16))
-            
-            HStack {
-                Text("Recent Job List")
-                    .font(.title3)
-                    .foregroundStyle(.darkBlue)
+        NavigationStack(path: $routerPath.path) {
+            List {
+                HeaderView()
                 
-                Spacer()
+                OfferView()
+                    .listRowInsets(EdgeInsets(top: 5, leading: 16, bottom: 0, trailing: 16))
                 
-                Button {
-                    routerPath.navigate(to: .recentJobs)
-                } label: {
-                    Text("See More")
+                FindYourJobView()
+                    .listRowInsets(EdgeInsets(top: 5, leading: 16, bottom: 0, trailing: 16))
+                
+                HStack {
+                    Text("Recent Job List")
                         .font(.title3)
+                        .foregroundStyle(.darkBlue)
+                    
+                    Spacer()
+                    
+                    Button {
+                        routerPath.navigate(to: .recentJobs)
+                    } label: {
+                        Text("See More")
+                            .font(.title3)
+                    }
+                }
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
+                
+                ForEach(viewModel.recentJobs) { job in
+                    JobCardView(job: job)
+                        .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 0, trailing: 16))
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                 }
             }
+            .listStyle(.plain)
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
-            
-            ForEach(viewModel.recentJobs) { job in
-                JobCardView(job: job)
-                    .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 0, trailing: 16))
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-            }
+            .withAppRouter()
         }
-        .listStyle(.plain)
-        .listRowBackground(Color.clear)
-        .listRowSeparator(.hidden)
+        .environment(routerPath)
     }
 }
 

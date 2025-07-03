@@ -31,25 +31,34 @@ struct TabNavigator: View {
                 }
                 .tag(1)
             
-            MessagesScreen()
+            AddPost()
                 .tabItem {
-                    Image(selectedTab == 2 ? .chatSelect : .chatUnSelect)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 24, height: 24)
+                    Image(systemName: "plus.circle.fill")
+                        .font(.largeTitle)
+                        .padding(.top)
                 }
                 .tag(2)
             
-            BookmarkScreen()
+            MessagesScreen()
                 .tabItem {
-                    Image(selectedTab == 3 ? .bookmarkSelect : .bookmarkUnSelect)
+                    Image(selectedTab == 3 ? .chatSelect : .chatUnSelect)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 24, height: 24)
                 }
                 .tag(3)
+            
+            BookmarkScreen()
+                .tabItem {
+                    Image(selectedTab == 4 ? .bookmarkSelect : .bookmarkUnSelect)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24, height: 24)
+                }
+                .tag(4)
         }
         .tint(.orange)
+        .toolbarVisibility(.hidden, for: .navigationBar)
     }
 }
 

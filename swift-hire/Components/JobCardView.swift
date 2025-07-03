@@ -50,8 +50,10 @@ struct JobCardView: View {
             HStack(spacing: 8) {
                 ForEach(job.tags, id: \.self) { tag in
                     Text(tag)
-                        .font(.subheadline)
+                        .font(.system(size: 14))
                         .padding(.horizontal, 12)
+                        .lineLimit(1)
+                        .allowsTightening(true)
                         .padding(.vertical, 6)
                         .background(Color(.systemGray6))
                         .cornerRadius(6)
@@ -61,8 +63,7 @@ struct JobCardView: View {
                     
                 } label: {
                     Text("Apply")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
+                        .font(.system(size: 14))
                         .foregroundColor(Color(.label))
                         .padding(.horizontal, 20)
                         .padding(.vertical, 8)
