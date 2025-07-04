@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CompanyCardView: View {
+    
     let company: Company
+    var onTapFollow: ((Company) -> Void)?
 
     var body: some View {
         VStack(spacing: 12) {
@@ -29,9 +31,9 @@ struct CompanyCardView: View {
                 .lineLimit(1)
             
             Button {
-                
+                onTapFollow?(company)
             } label: {
-                Text("Follow")
+                Text(company.isFollowed ? "Following" : "Follow")
                     .customFont(.regular, 15)
                     .padding(.vertical, 5)
                     .frame(maxWidth: 100)
@@ -51,5 +53,5 @@ struct CompanyCardView: View {
 
 
 #Preview {
-    CompanyCardView(company: Company(logoName: "google_logo", companyName: "Google Inc", followers: "1M Followers"))
+    CompanyCardView(company: Company(logoName: "google_logo", companyName: "Google Inc", followers: "1M Followers", isFollowed: true))
 }

@@ -16,7 +16,9 @@ struct BookmarkScreen: View {
             List {
                 if !viewModel.savedJobs.isEmpty {
                     ForEach(viewModel.savedJobs) { job in
-                        SavedJobCardView(job: job)
+                        SavedJobCardView(job: job, removeBookmark: { job in
+                            viewModel.removeBookmark(job)
+                        })
                             .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 0, trailing: 16))
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)

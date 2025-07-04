@@ -10,6 +10,7 @@ import SwiftUI
 struct SavedJobCardView: View {
     
     let job: Job
+    var removeBookmark: ((Job) -> Void)?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -26,9 +27,17 @@ struct SavedJobCardView: View {
                 
                 Spacer()
                 
-                Image(systemName: "ellipsis")
-                    .foregroundColor(.gray)
-                    .rotationEffect(.degrees(90))
+                Menu {
+                    Button(role: .destructive) {
+                        removeBookmark?(job)
+                    } label: {
+                        Label("Remove", systemImage: "bookmark.slash")
+                    }
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .foregroundColor(.gray)
+                        .rotationEffect(.degrees(90))
+                }
             }
             
             VStack(alignment: .leading, spacing: 4) {

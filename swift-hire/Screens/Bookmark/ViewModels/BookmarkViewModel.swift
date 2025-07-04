@@ -19,6 +19,12 @@ class BookmarkViewModel: ObservableObject {
         }
     }
     
+    func removeBookmark(_ job: Job) {
+        withAnimation {
+            savedJobs = savedJobs.filter { $0.id != job.id }
+        }
+    }
+    
     func removeAllBookmarks() {
         savedJobs.removeAll()
     }

@@ -21,6 +21,8 @@ extension View {
               .toolbarVisibility(.hidden, for: .navigationBar)
       case .recentJobs:
           SeeAllRecentJobsScreen()
+      case .profile:
+          ProfileScreen()
       }
     }
   }

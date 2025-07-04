@@ -64,7 +64,7 @@ struct LoginScreen: View {
                 
             } label: {
                 HStack {
-                    Image(.google)
+                    Image(.googleIcon)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 20, height: 20)

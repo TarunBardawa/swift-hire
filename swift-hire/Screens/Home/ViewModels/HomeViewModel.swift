@@ -75,7 +75,7 @@ class HomeViewModel: ObservableObject {
                 tags: ["Frontend Developer", "Full Time"]
             ),
             Job(
-                companyLogo: "google",
+                companyLogo: "googleIcon",
                 jobTitle: "QA Engineer",
                 location: "Denver, CO",
                 salary: "$14K",

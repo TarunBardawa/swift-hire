@@ -16,7 +16,9 @@ struct Home: View {
         NavigationStack(path: $routerPath.path) {
             VStack {
                 List {
-                    HeaderView()
+                    HeaderView {
+                        routerPath.navigate(to: .profile)
+                    }
                     
                     OfferView()
                         .listRowInsets(EdgeInsets(top: 5, leading: 16, bottom: 0, trailing: 16))
@@ -54,10 +56,11 @@ struct Home: View {
                         .listRowSeparator(.hidden)
                 }
                 .listStyle(.plain)
-                .withAppRouter()
-                .navigationBarColor(backgroundColor: Color(.systemGray5))
+                
             }
             .background(Color(.systemGray5))
+            .withAppRouter()
+            .navigationBarColor(backgroundColor: Color(.systemGray5))
         }
         .environment(routerPath)
         .environmentObject(viewModel)

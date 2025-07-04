@@ -8,18 +8,25 @@
 import SwiftUI
 
 struct HeaderView: View {
+    
+    var onProfileTap: (() -> Void)?
+    
     var body: some View {
         HStack {
             Text("Hello\nTarun B")
                 .customFont(.medium, 20)
                 .foregroundStyle(.darkBlue)
             Spacer()
+            
             Image(.userprofile)
                 .resizable()
                 .scaledToFill()
                 .frame(width: 40, height: 40)
                 .clipShape(.circle)
-            
+                .contentShape(.rect)
+                .onTapGesture {
+                    onProfileTap?()
+                }
         }
         .background(Color(.systemGray5))
         .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 10, trailing: 16))

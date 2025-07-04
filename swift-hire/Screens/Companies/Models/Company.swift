@@ -12,4 +12,5 @@ struct Company: Identifiable {
     let logoName: String
     let companyName: String
     let followers: String
+    var isFollowed: Bool
 }
