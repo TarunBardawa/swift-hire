@@ -52,6 +52,7 @@ struct LoginScreen: View {
             .padding(.horizontal, 24)
             
             AppButton(title: "LOGIN") {
+                UserDefaults.sharedDefaults.set(true, forKey: "isLoggedIn")
                 withAnimation {
                     authProvider.authState = .loggedIn
                 }
@@ -93,7 +94,7 @@ struct LoginScreen: View {
                 } label: {
                     Text("Sign Up")
                         .font(.caption)
-                        .foregroundColor(.orange)
+                        .foregroundColor(.textColorYellow)
                         .underline()
                 }
                 .buttonStyle(.plain)

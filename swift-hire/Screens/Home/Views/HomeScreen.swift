@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Home: View {
-    
+    @EnvironmentObject private var bookmarkVM: BookmarkViewModel
     @StateObject private var viewModel = HomeViewModel()
     @State private var routerPath = RouterPath()
     
@@ -26,7 +26,7 @@ struct Home: View {
                     
                     HStack {
                         Text("Recent Job List")
-                            .font(.title3)
+                            .customFont(.medium, 17)
                             .foregroundStyle(.darkBlue)
                         
                         Spacer()
@@ -35,7 +35,7 @@ struct Home: View {
                             routerPath.navigate(to: .recentJobs)
                         } label: {
                             Text("See More")
-                                .font(.title3)
+                                .customFont(.medium, 17)
                         }
                     }
                     .listRowBackground(Color.clear)
@@ -54,14 +54,13 @@ struct Home: View {
                         .listRowSeparator(.hidden)
                 }
                 .listStyle(.plain)
-                .listRowBackground(Color.clear)
-                .listRowSeparator(.hidden)
                 .withAppRouter()
-                .navigationBarColor(backgroundColor: Color(.systemGray5), titleColor: .text)
+                .navigationBarColor(backgroundColor: Color(.systemGray5))
             }
             .background(Color(.systemGray5))
         }
         .environment(routerPath)
+        .environmentObject(viewModel)
     }
 }
 

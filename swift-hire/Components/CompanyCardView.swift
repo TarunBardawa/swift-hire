@@ -15,36 +15,33 @@ struct CompanyCardView: View {
             Image(company.logoName)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 56, height: 56)
-                .background(.black.opacity(0.1))
+                .frame(width: 40, height: 40)
                 .clipShape(Circle())
                 .padding(.top, 12)
             
             Text(company.companyName)
-                .font(.headline)
-                .foregroundColor(.black)
+                .customFont(.semiBold)
                 .lineLimit(1)
             
             Text(company.followers)
-                .font(.subheadline)
                 .foregroundColor(.gray)
+                .customFont(.regular, 15)
                 .lineLimit(1)
             
             Button {
                 
             } label: {
                 Text("Follow")
-                    .font(.system(size: 17, weight: .medium))
-                    .foregroundColor(.text)
-                    .padding(.vertical, 10)
-                    .frame(maxWidth: .infinity)
+                    .customFont(.regular, 15)
+                    .padding(.vertical, 5)
+                    .frame(maxWidth: 100)
                     .overlay(
                         RoundedRectangle(cornerRadius: 22)
-                            .stroke(Color.purple, lineWidth: 1)
+                            .stroke(.purple, lineWidth: 1)
                     )
             }
-            .padding(.horizontal, 16)
         }
+        .frame(maxWidth: .infinity)
         .padding(.vertical)
         .background(Color(.systemGray6))
         .cornerRadius(12)

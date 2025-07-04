@@ -11,13 +11,13 @@ struct FindYourJobView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text("Find Your Job")
-                .font(.title3)
+                .customFont(.medium, 17)
                 .padding(.leading, 5)
             
             HStack(spacing: 16) {
                 JobTypeCard(
                     color: Color(red: 0.75, green: 0.93, blue: 1.0),
-                    iconName: "doc.text.magnifyingglass",
+                    iconName: .remoteJobs,
                     count: "44.5K",
                     title: "Remote Job"
                 )
@@ -48,26 +48,23 @@ struct FindYourJobView: View {
 
 struct JobTypeCard: View {
     let color: Color
-    let iconName: String?
+    let iconName: ImageResource?
     let count: String
     let title: String
 
     var body: some View {
         VStack(spacing: 8) {
             if let icon = iconName {
-                Image(systemName: icon)
+                Image(icon)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 36, height: 36)
                     .foregroundColor(.gray)
             }
             Text(count)
-                .font(.title)
-                .bold()
-                .foregroundColor(.black)
+                .customFont(.medium)
             Text(title)
-                .font(.headline)
-                .foregroundColor(.black.opacity(0.7))
+                .customFont(.regular)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(color)

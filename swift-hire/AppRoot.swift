@@ -10,13 +10,12 @@ import SwiftUI
 struct AppRoot: View {
     
     @EnvironmentObject var authProvider: AuthProvider
-    @State var routerPath = RouterPath()
     
     var body: some View {
         switch authProvider.authState {
         case .pending:
             ZStack {
-                Color.bg
+                Color.bgMainView
                 ProgressView()
                     .controlSize(.large)
                     .tint(.white)
@@ -27,11 +26,7 @@ struct AppRoot: View {
                 .transition(CustomTransition())
             
         case .loggedOut:
-            NavigationStack(path: $routerPath.path) {
-                Onboard()
-                    .withAppRouter()
-            }
-            .environment(routerPath)
+            AuthStack()
         }
     }
 }

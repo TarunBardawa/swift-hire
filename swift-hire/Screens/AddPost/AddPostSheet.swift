@@ -10,20 +10,24 @@ import SwiftUI
 struct AddPostSheet: View {
     var body: some View {
         ScrollView {
-            Text("What would you like to add?")
-                .font(.headline)
-            
-            Text("would you like to post your tips and experience or create a job?")
-                .font(.subheadline)
-                .multilineTextAlignment(.center)
-            
-            AppButton(title: "POST") {
+            VStack(spacing: 12) {
+                Text("What would you like to add?")
+                    .customFont(.semiBold, 18)
                 
-            }
-            
-            AppButton(title: "MAKE A JOB", backgroundColor: .lightPurple) {
+                Text("would you like to post your tips and experience or create a job?")
+                    .foregroundStyle(.gray)
+                    .customFont(.regular)
+                    .multilineTextAlignment(.center)
                 
+                AppButton(title: "POST") {
+                    
+                }
+                
+                AppButton(title: "MAKE A JOB", backgroundColor: .lightPurple) {
+                    
+                }
             }
+            .padding(.top)
         }
         .padding()
     }

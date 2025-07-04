@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TabNavigator: View {
     
+    @StateObject private var bookmarkVM = BookmarkViewModel()
     @State private var selectedTab = 0
     
     var body: some View {
@@ -60,6 +61,7 @@ struct TabNavigator: View {
         }
         .tint(.orange)
         .toolbarVisibility(.hidden, for: .navigationBar)
+        .environmentObject(bookmarkVM)
     }
 }
 

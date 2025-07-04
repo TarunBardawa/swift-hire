@@ -16,19 +16,19 @@ struct CustomTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
-                .font(.caption)
                 .foregroundColor(.gray)
+                .font(.customFont(.medium, 16))
             
             if isSecure {
                 SecureField(placeholder, text: $text)
-                    .font(.system(size: 16))
+                    .font(.customFont(.regular, 16))
                     .padding()
                     .background(.white)
                     .textInputAutocapitalization(.never)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             } else {
                 TextField(placeholder, text: $text)
-                    .font(.system(size: 16))
+                    .font(.customFont(.regular, 16))
                     .padding()
                     .background(.white)
                     .textInputAutocapitalization(.never)

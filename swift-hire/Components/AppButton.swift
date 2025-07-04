@@ -15,8 +15,8 @@ struct AppButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-                .font(.headline)
                 .foregroundColor(.white)
+                .customFont(.medium)
                 .frame(maxWidth: .infinity)
                 .frame(height: 48)
                 .background(backgroundColor)

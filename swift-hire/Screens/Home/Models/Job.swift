@@ -9,12 +9,10 @@ import SwiftUI
 
 struct Job: Identifiable {
     let id = UUID()
-    let companyLogo: String // Image name or URL
-    let logoBackgroundColor: Color
+    let companyLogo: String
     let jobTitle: String
     let location: String
     let salary: String
     let timeUnit: String
     let tags: [String]
-    let isBookmarked: Bool
 }

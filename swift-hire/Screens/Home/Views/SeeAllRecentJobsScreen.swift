@@ -10,11 +10,11 @@ import SwiftUI
 struct SeeAllRecentJobsScreen: View {
     
     @Environment(RouterPath.self) private var routerPath
-    @StateObject private var viewModel = BookmarkViewModel()
+    @EnvironmentObject private var viewModel: HomeViewModel
     
     var body: some View {
         List {
-            ForEach(viewModel.savedJobs) { job in
+            ForEach(viewModel.recentJobs) { job in
                 JobCardView(job: job)
                     .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 0, trailing: 16))
                     .listRowBackground(Color.clear)
@@ -23,6 +23,7 @@ struct SeeAllRecentJobsScreen: View {
         }
         .listStyle(.plain)
         .navigationBarBackButtonHidden()
+        .navigationBarColor(backgroundColor: .white, titleColor: .text)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 backButton()

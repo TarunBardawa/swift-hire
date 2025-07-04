@@ -14,33 +14,22 @@ struct MessagesScreen: View {
             Image(.noChat)
             
             Text("No Messages")
-                .font(.title)
-                .fontWeight(.semibold)
-                .foregroundColor(.primary)
+                .customFont(.semiBold, 18)
             
             Text("You currently have no incoming messages")
-                .font(.body)
                 .foregroundColor(.secondary)
+                .customFont(.regular, 15)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
             
-            Button {
+            AppButton(title: "CREATE A MESSAGE", action: {
                 
-            } label: {
-                Text("CREATE A MESSAGE")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(.darkBlue)
-                    .cornerRadius(10)
-                    .padding(.horizontal, 20)
-            }
+            })
             .padding(.top, 40)
+            .padding(.horizontal)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.systemBackground))
-        .edgesIgnoringSafeArea(.all)
     }
 }
 

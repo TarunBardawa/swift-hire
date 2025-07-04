@@ -17,7 +17,9 @@ class AuthProvider: ObservableObject {
     }
     
     func autoLogin() {
-        // implement auto login logic here
+        if UserDefaults.sharedDefaults.bool(forKey: "isLoggedIn") == true {
+            self.authState = .loggedIn
+        }
     }
     
 }

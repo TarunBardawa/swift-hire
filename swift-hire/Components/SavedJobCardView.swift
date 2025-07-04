@@ -33,17 +33,16 @@ struct SavedJobCardView: View {
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(job.jobTitle)
-                    .font(.headline)
-                    .foregroundColor(Color(.label))
+                    .customFont(.medium)
                 Text(job.location)
-                    .font(.subheadline)
                     .foregroundColor(.gray)
+                    .customFont(.regular, 15)
             }
             
             HStack(spacing: 8) {
                 ForEach(job.tags, id: \.self) { tag in
                     Text(tag)
-                        .font(.system(size: 14))
+                        .customFont(.regular, 14)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
                         .lineLimit(1)
@@ -55,18 +54,16 @@ struct SavedJobCardView: View {
             
             HStack(alignment: .firstTextBaseline, spacing: 4) {
                 Text("1 week ago")
-                    .font(.subheadline)
                     .foregroundColor(Color(.systemGray))
+                    .customFont(.regular, 14)
                 
                 Spacer()
                 
                 Text(job.salary)
-                    .font(.headline)
-//                    .fontWeight(.bold)
-                    .foregroundColor(Color(.label))
+                    .customFont(.medium, 14)
                 Text("/ \(job.timeUnit)")
-                    .font(.subheadline)
                     .foregroundColor(.gray)
+                    .customFont(.medium, 13)
             }
         }
         .padding()
@@ -80,12 +77,10 @@ struct SavedJobCardView: View {
 #Preview {
     SavedJobCardView(job: Job(
         companyLogo: "google.logo",
-        logoBackgroundColor: Color.yellow,
         jobTitle: "Software Engineer",
         location: "California, USA",
         salary: "$15K",
         timeUnit: "Mo",
-        tags: ["Product Designer", "Full Time"],
-        isBookmarked: false
+        tags: ["Product Designer", "Full Time"]
     ))
 }

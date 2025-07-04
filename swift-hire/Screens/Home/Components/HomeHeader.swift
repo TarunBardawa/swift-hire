@@ -10,8 +10,8 @@ import SwiftUI
 struct HeaderView: View {
     var body: some View {
         HStack {
-            Text("Hello\nJohn Doe")
-                .font(.title2)
+            Text("Hello\nTarun B")
+                .customFont(.medium, 20)
                 .foregroundStyle(.darkBlue)
             Spacer()
             Image(.userprofile)

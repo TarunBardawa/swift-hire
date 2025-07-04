@@ -9,26 +9,21 @@ import SwiftUI
 
 @MainActor
 class BookmarkViewModel: ObservableObject {
-    @Published var savedJobs: [Job] = [
-        Job(
-            companyLogo: "googleIcon",
-            logoBackgroundColor: Color.yellow,
-            jobTitle: "Product Designer",
-            location: "California, USA",
-            salary: "$15K",
-            timeUnit: "Mo",
-            tags: ["Product Designer", "Full Time"],
-            isBookmarked: false
-        ),
-        Job(
-            companyLogo: "dribbbleIcon",
-            logoBackgroundColor: Color.pink,
-            jobTitle: "Software Engineer",
-            location: "Redmond, WA",
-            salary: "$18K",
-            timeUnit: "Mo",
-            tags: ["Software Engineer", "Full Time"],
-            isBookmarked: false
-        )
-    ]
+    @Published var savedJobs: [Job] = []
+    
+    func addBookmark(_ job: Job) {
+        if savedJobs.contains(where: { $0.id == job.id }) {
+            savedJobs = savedJobs.filter { $0.id != job.id }
+        } else {
+            savedJobs.append(job)
+        }
+    }
+    
+    func removeAllBookmarks() {
+        savedJobs.removeAll()
+    }
+    
+    func isBookmarked(_ job: Job) -> Bool {
+        savedJobs.contains(where: { $0.id == job.id })
+    }
 }
