@@ -1,15 +1,6 @@
 {
-  "originHash" : "4d554b9548a28268a3323c3a887797d943ebb1141c416108d252250dbaed9ca3",
+  "originHash" : "5f3d3cbb92ec70a9803abd142c851766d031b02c22375f9b6ba294094fa9dd23",
   "pins" : [
-    {
-      "identity" : "bottomsheet",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/lucaszischka/BottomSheet",
-      "state" : {
-        "revision" : "720ddbd1371fef2a09cc1ab65fc503df37767f9c",
-        "version" : "3.1.1"
-      }
-    },
     {
       "identity" : "swiftui-wrapping-stack",
       "kind" : "remoteSourceControl",

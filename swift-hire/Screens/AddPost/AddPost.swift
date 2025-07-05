@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import BottomSheet
 
 struct AddPost: View {
     var body: some View {

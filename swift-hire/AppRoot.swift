@@ -22,7 +22,8 @@ struct AppRoot: View {
             }
             .ignoresSafeArea()
         case .loggedIn:
-            TabNavigator()
+//            TabNavigator()
+            CustomTabNavigator()
                 .transition(CustomTransition())
             
         case .loggedOut:

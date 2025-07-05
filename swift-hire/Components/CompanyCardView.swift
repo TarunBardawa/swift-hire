@@ -42,6 +42,7 @@ struct CompanyCardView: View {
                             .stroke(.purple, lineWidth: 1)
                     )
             }
+            .buttonStyle(.plain)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical)

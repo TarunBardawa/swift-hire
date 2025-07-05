@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C28B5712E1720C300FCA8E7 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 5C28B5702E1720C300FCA8E7 /* BottomSheet */; };
 		5CD92BC62E187EC3006A4852 /* WrappingStack in Frameworks */ = {isa = PBXBuildFile; productRef = 5CD92BC52E187EC3006A4852 /* WrappingStack */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C28B5712E1720C300FCA8E7 /* BottomSheet in Frameworks */,
 				5CD92BC62E187EC3006A4852 /* WrappingStack in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,7 +83,6 @@
 			);
 			name = "swift-hire";
 			packageProductDependencies = (
-				5C28B5702E1720C300FCA8E7 /* BottomSheet */,
 				5CD92BC52E187EC3006A4852 /* WrappingStack */,
 			);
 			productName = "swift-hire";
@@ -117,7 +114,6 @@
 			mainGroup = 5C363D1B2E14F60E00A4C2AD;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				5C28B56F2E1720C300FCA8E7 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 				5CD92BC42E187EC3006A4852 /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -358,14 +354,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5C28B56F2E1720C300FCA8E7 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/lucaszischka/BottomSheet";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.1;
-			};
-		};
 		5CD92BC42E187EC3006A4852 /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/diniska/swiftui-wrapping-stack";
@@ -377,11 +365,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5C28B5702E1720C300FCA8E7 /* BottomSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5C28B56F2E1720C300FCA8E7 /* XCRemoteSwiftPackageReference "BottomSheet" */;
-			productName = BottomSheet;
-		};
 		5CD92BC52E187EC3006A4852 /* WrappingStack */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5CD92BC42E187EC3006A4852 /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */;

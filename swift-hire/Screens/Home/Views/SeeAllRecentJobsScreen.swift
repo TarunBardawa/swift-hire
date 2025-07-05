@@ -20,10 +20,15 @@ struct SeeAllRecentJobsScreen: View {
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
             }
+            
+            Spacer(minLength: AppLayout.tabBarHeight)
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
         }
+        .background(Color(.systemGray5))
         .listStyle(.plain)
         .navigationBarBackButtonHidden()
-        .navigationBarColor(backgroundColor: .white, titleColor: .text)
+        .navigationBarColor(backgroundColor: Color(.systemGray5))
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 backButton()

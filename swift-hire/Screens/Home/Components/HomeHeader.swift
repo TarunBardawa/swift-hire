@@ -9,11 +9,12 @@ import SwiftUI
 
 struct HeaderView: View {
     
+    var userName: String
     var onProfileTap: (() -> Void)?
     
     var body: some View {
         HStack {
-            Text("Hello\nTarun B")
+            Text("Hello\n\(userName)")
                 .customFont(.medium, 20)
                 .foregroundStyle(.darkBlue)
             Spacer()

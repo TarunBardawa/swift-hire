@@ -15,15 +15,12 @@ struct SavedJobCardView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .center) {
-                ZStack {
-                    Circle()
-                        .fill(.black.opacity(0.1))
-                        .frame(width: 44, height: 44)
-                    Image(job.companyLogo)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 26, height: 26)
-                }
+                Image(job.companyLogo)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 26, height: 26)
+                    .clipShape(.circle)
+                    .padding(.leading)
                 
                 Spacer()
                 
@@ -37,6 +34,7 @@ struct SavedJobCardView: View {
                     Image(systemName: "ellipsis")
                         .foregroundColor(.gray)
                         .rotationEffect(.degrees(90))
+                        .padding()
                 }
             }
             
@@ -47,6 +45,7 @@ struct SavedJobCardView: View {
                     .foregroundColor(.gray)
                     .customFont(.regular, 15)
             }
+            .padding(.horizontal)
             
             HStack(spacing: 8) {
                 ForEach(job.tags, id: \.self) { tag in
@@ -60,6 +59,7 @@ struct SavedJobCardView: View {
                         .clipShape(.capsule)
                 }
             }
+            .padding(.horizontal)
             
             HStack(alignment: .firstTextBaseline, spacing: 4) {
                 Text("1 week ago")
@@ -74,8 +74,9 @@ struct SavedJobCardView: View {
                     .foregroundColor(.gray)
                     .customFont(.medium, 13)
             }
+            .padding(.horizontal)
         }
-        .padding()
+        .padding(.vertical)
         .background(Color.white)
         .cornerRadius(12)
         .shadow(color: Color(.black).opacity(0.1), radius: 4, x: 0, y: 4)

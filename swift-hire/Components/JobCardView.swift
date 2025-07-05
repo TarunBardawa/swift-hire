@@ -20,15 +20,11 @@ struct JobCardView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(alignment: .top) {
-                ZStack {
-                    Circle()
-                        .fill(.black.opacity(0.05))
-                        .frame(width: 44, height: 44)
-                    Image(job.companyLogo)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 26, height: 26)
-                }
+                Image(job.companyLogo)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 26, height: 26)
+                
                 VStack(alignment: .leading, spacing: 4) {
                     Text(job.jobTitle)
                         .customFont(.semiBold)
@@ -45,6 +41,7 @@ struct JobCardView: View {
                     Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
                         .foregroundColor(.gray)
                 }
+                .buttonStyle(.plain)
             }
             
             HStack(alignment: .firstTextBaseline, spacing: 4) {

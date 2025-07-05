@@ -26,6 +26,11 @@ struct BookmarkScreen: View {
                 } else {
                     EmptyBookmark()
                 }
+                
+                Spacer(minLength: AppLayout.tabBarHeight)
+                    .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 0, trailing: 16))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
             .navigationTitle("Saved Jobs")

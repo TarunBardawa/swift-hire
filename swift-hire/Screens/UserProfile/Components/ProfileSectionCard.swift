@@ -34,6 +34,7 @@ struct ProfileSectionCard: View {
             
             content
         }
+        .padding()
         .background(Color.white)
     }
 }

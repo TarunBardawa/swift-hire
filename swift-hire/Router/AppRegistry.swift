@@ -17,7 +17,8 @@ extension View {
       case .login:
           LoginScreen()
       case .loggedIn:
-          TabNavigator()
+//          TabNavigator()
+          CustomTabNavigator()
               .toolbarVisibility(.hidden, for: .navigationBar)
       case .recentJobs:
           SeeAllRecentJobsScreen()

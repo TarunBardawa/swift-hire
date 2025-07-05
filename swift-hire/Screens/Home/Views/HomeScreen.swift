@@ -16,7 +16,7 @@ struct Home: View {
         NavigationStack(path: $routerPath.path) {
             VStack {
                 List {
-                    HeaderView {
+                    HeaderView(userName: viewModel.user?.name ?? "User") {
                         routerPath.navigate(to: .profile)
                     }
                     
@@ -43,14 +43,24 @@ struct Home: View {
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
                     
-                    ForEach(viewModel.recentJobs) { job in
-                        JobCardView(job: job)
-                            .listRowInsets(EdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16))
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .tint(.darkBlue)
+                            .controlSize(.large)
+                            .hSpacing(.center)
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
+                    } else {
+                        ForEach(viewModel.recentJobs) { job in
+                            JobCardView(job: job)
+                                .listRowInsets(EdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16))
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
+                        }
                     }
                     
-                    Spacer(minLength: 30)
+                    
+                    Spacer(minLength: AppLayout.tabBarHeight)
                         .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 0, trailing: 16))
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)

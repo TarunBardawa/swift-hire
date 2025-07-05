@@ -26,8 +26,6 @@ struct TabNavigator: View {
                     Home()
                 case .companies:
                     Companies()
-//                case .add:
-//                    EmptyView()
                 case .messages:
                     MessagesScreen()
                 case .bookmarks:
@@ -37,11 +35,34 @@ struct TabNavigator: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.bottom, tabBarHeight)
             
-            // Bottom sheet (positioned behind the tab bar)
+//            Home()
+//                .opacity(selectedTab == .home ? 1 : 0)
+//                .allowsHitTesting(selectedTab == .home)
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .padding(.bottom, tabBarHeight)
+//            
+//            Companies()
+//                .opacity(selectedTab == .companies ? 1 : 0)
+//                .allowsHitTesting(selectedTab == .companies)
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .padding(.bottom, tabBarHeight)
+//            
+//            MessagesScreen()
+//                .opacity(selectedTab == .messages ? 1 : 0)
+//                .allowsHitTesting(selectedTab == .messages)
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .padding(.bottom, tabBarHeight)
+//            
+//            BookmarkScreen()
+//                .opacity(selectedTab == .bookmarks ? 1 : 0)
+//                .allowsHitTesting(selectedTab == .bookmarks)
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .padding(.bottom, tabBarHeight)
+            
             if isSheetPresented {
                 BottomSheetView(isPresented: $isSheetPresented)
                     .transition(.move(edge: .bottom))
-                    .zIndex(0) // Behind the tab bar
+                    .zIndex(0)
             }
             
             VStack {

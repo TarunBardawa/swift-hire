@@ -6,99 +6,82 @@
 //
 
 import SwiftUI
+import Combine
 
 @MainActor
 class HomeViewModel: ObservableObject {
+    @Published private(set) var user: UserProfile?
+    @Published private(set) var isLoading: Bool = false
     
-    @Published var recentJobs: [Job] = []
+    @Published private(set) var errorMessage: String?
+    
+    private let apiService = APIService.shared
+    private let profileManager = UserProfileManager.shared
+    private var cancellables = Set<AnyCancellable>()
+    
+    @Published private(set) var recentJobs: [Job] = []
     
     init() {
-        getRecentJobs()
+        
+        Task {
+            await fetchUserProfile()
+            await getRecentJobs()
+        }
+        observeUserProfile()
     }
     
-    func getRecentJobs() {
-        recentJobs = [
-            Job(
-                companyLogo: "googleIcon",
-                jobTitle: "Product Designer",
-                location: "California, USA",
-                salary: "$15K",
-                timeUnit: "Mo",
-                tags: ["Product Designer", "Full Time"]
-            ),
-            Job(
-                companyLogo: "dribbbleIcon",
-                jobTitle: "Software Engineer",
-                location: "Redmond, WA",
-                salary: "$18K",
-                timeUnit: "Mo",
-                tags: ["Software Engineer", "Full Time"]
-            ),
-            Job(
-                companyLogo: "twitterIcon",
-                jobTitle: "Data Scientist",
-                location: "Austin, TX",
-                salary: "$20K",
-                timeUnit: "Mo",
-                tags: ["Data Scientist", "Contract"]
-            ),
-            Job(
-                companyLogo: "facebookIcon",
-                jobTitle: "UX Designer",
-                location: "Seattle, WA",
-                salary: "$16K",
-                timeUnit: "Mo",
-                tags: ["UX Designer", "Full Time"]
-            ),
-            Job(
-                companyLogo: "appleIcon",
-                jobTitle: "iOS Developer",
-                location: "Cupertino, CA",
-                salary: "$22K",
-                timeUnit: "Mo",
-                tags: ["iOS Developer", "Full Time"]
-            ),
-            Job(
-                companyLogo: "dribbbleIcon",
-                jobTitle: "Backend Engineer",
-                location: "New York, NY",
-                salary: "$19K",
-                timeUnit: "Mo",
-                tags: ["Backend Engineer", "Contract"]
-            ),
-            Job(
-                companyLogo: "linkedin",
-                jobTitle: "Frontend Developer",
-                location: "San Francisco, CA",
-                salary: "$17K",
-                timeUnit: "Mo",
-                tags: ["Frontend Developer", "Full Time"]
-            ),
-            Job(
-                companyLogo: "googleIcon",
-                jobTitle: "QA Engineer",
-                location: "Denver, CO",
-                salary: "$14K",
-                timeUnit: "Mo",
-                tags: ["QA Engineer", "Part Time"]
-            ),
-            Job(
-                companyLogo: "twitterIcon",
-                jobTitle: "UI Designer",
-                location: "Los Angeles, CA",
-                salary: "$16K",
-                timeUnit: "Mo",
-                tags: ["UI Designer", "Full Time"]
-            ),
-            Job(
-                companyLogo: "facebookIcon",
-                jobTitle: "DevOps Engineer",
-                location: "Boston, MA",
-                salary: "$21K",
-                timeUnit: "Mo",
-                tags: ["DevOps Engineer", "Remote"]
-            )
-        ]
+    func observeUserProfile() {
+        profileManager.$user
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] user in
+                self?.user = user
+            }
+            .store(in: &cancellables)
     }
     
+    func fetchUserProfile() async {
+        do {
+            isLoading = true
+            let user: UserProfile = try await apiService.fetch(endpoint: "https://dummyjson.com/c/b32d-04d9-4e6d-bf96")
+            profileManager.setUser(user)
+            self.user = user
+            isLoading = false
+        } catch {
+            //                handleError(error)
+        }
+    }
+    
+    func getRecentJobs() async {
+        do {
+            isLoading = true
+            let jobs: [Job] = try await apiService.fetch(endpoint: "https://dummyjson.com/c/9e6d-424c-404e-ba24")
+            recentJobs = jobs
+            isLoading = false
+        } catch {
+            handleError(error)
+        }
+    }
+    
+    private func handleError(_ error: Error) {
+        isLoading = false
+        
+        if let apiError = error as? APIError {
+            switch apiError {
+            case .invalidURL:
+                errorMessage = "Invalid URL"
+            case .invalidResponse:
+                errorMessage = "Invalid server response"
+            case .statusCode(let code):
+                errorMessage = "Server error: \(code)"
+            case .decodingError(let error):
+                errorMessage = "Failed to decode response: \(error.localizedDescription)"
+            case .unknown(let error):
+                errorMessage = "Unknown error: \(error.localizedDescription)"
+            }
+        } else {
+            errorMessage = error.localizedDescription
+        }
+        
+        print("API Error: \(error)")
+    }
 }

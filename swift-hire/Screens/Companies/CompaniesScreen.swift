@@ -25,7 +25,7 @@ struct Companies: View {
                     }
                 }
                 .padding()
-                .padding(.bottom, 30)
+                .padding(.bottom, AppLayout.tabBarHeight)
             }
             .background(Color(.systemGray5).edgesIgnoringSafeArea(.all))
             .navigationBarColor(backgroundColor: Color(.systemGray5), titleColor: .text)

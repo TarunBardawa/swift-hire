@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct UserProfile: Identifiable {
-    let id = UUID()
+struct UserProfile: Identifiable, Codable {
+    var id = UUID()
     let name: String
     let location: String
     let followers: String
@@ -21,28 +21,44 @@ struct UserProfile: Identifiable {
     let appreciations: [Appreciation]
     let skills: [String]
     let profileImage: String // Name of image asset
+    
+    enum CodingKeys: String, CodingKey {
+        case name, location, followers, following, aboutMe, workExperience, education, languages, resume, appreciations, skills, profileImage
+    }
 }
 
-struct WorkExperience: Identifiable, Hashable {
-    let id = UUID()
+struct WorkExperience: Identifiable, Hashable, Codable {
+    var id = UUID()
     let title: String
     let company: String
     let period: String
     let duration: String
+    
+    enum CodingKeys: String, CodingKey {
+        case title, company, period, duration
+    }
 }
 
-struct Education: Identifiable {
-    let id = UUID()
+struct Education: Identifiable, Codable {
+    var id = UUID()
     let degree: String
     let institution: String
     let year: String
+    
+    enum CodingKeys: String, CodingKey {
+        case degree, institution, year
+    }
 }
 
-struct Appreciation: Identifiable {
-    let id = UUID()
+struct Appreciation: Identifiable, Codable {
+    var id = UUID()
     let provider: String
     let title: String
     let year: String
+    
+    enum CodingKeys: String, CodingKey {
+        case provider, title, year
+    }
 }
 
 // MARK: - Mock Data
