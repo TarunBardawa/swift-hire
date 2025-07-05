@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FindYourJobView: View {
+    
+    let summary: Summary?
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text("Find Your Job")
@@ -18,20 +21,20 @@ struct FindYourJobView: View {
                 JobTypeCard(
                     color: Color(red: 0.75, green: 0.93, blue: 1.0),
                     iconName: .remoteJobs,
-                    count: "44.5K",
+                    count: "\(summary?.remote ?? "0")",
                     title: "Remote Job"
                 )
                 VStack(spacing: 8) {
                     JobTypeCard(
                         color: Color(red: 0.82, green: 0.78, blue: 1.0),
                         iconName: nil,
-                        count: "66.8k",
+                        count: "\(summary?.fullTime ?? "0")",
                         title: "Full Time"
                     )
                     JobTypeCard(
                         color: Color(red: 1.0, green: 0.89, blue: 0.74),
                         iconName: nil,
-                        count: "38.9k",
+                        count: "\(summary?.partTime ?? "0")",
                         title: "Part Time"
                     )
                 }
@@ -70,8 +73,4 @@ struct JobTypeCard: View {
         .background(color)
         .cornerRadius(8)
     }
-}
-
-#Preview {
-    FindYourJobView()
 }

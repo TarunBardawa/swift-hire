@@ -17,15 +17,26 @@ struct Companies: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(viewModel.companies) { company in
-                        CompanyCardView(company: company) { company in
-                            viewModel.followCompany(company)
+                if viewModel.isLoading {
+                    VStack {
+                        ProgressView()
+                            .tint(.darkBlue)
+                            .controlSize(.large)
+                    }
+                    .vSpacing(.center)
+                    .hSpacing(.center)
+                    .frame(height: UIScreen.screenHeight - AppLayout.tabBarHeight)
+                } else {
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        ForEach(viewModel.companies) { company in
+                            CompanyCardView(company: company) { company in
+                                viewModel.followCompany(company)
+                            }
                         }
                     }
+                    .padding()
+                    .padding(.bottom, AppLayout.tabBarHeight)
                 }
-                .padding()
-                .padding(.bottom, AppLayout.tabBarHeight)
             }
             .background(Color(.systemGray5).edgesIgnoringSafeArea(.all))
             .navigationBarColor(backgroundColor: Color(.systemGray5), titleColor: .text)

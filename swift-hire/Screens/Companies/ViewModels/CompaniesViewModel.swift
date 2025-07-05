@@ -9,23 +9,36 @@ import SwiftUI
 
 @MainActor
 class CompaniesViewModel: ObservableObject {
-    @Published var companies: [Company] = [
-        Company(logoName: "googleIcon", companyName: "Google Inc", followers: "1M Followers", isFollowed: false),
-        Company(logoName: "dribbbleIcon", companyName: "Dribbble Inc", followers: "1M Followers", isFollowed: false),
-        Company(logoName: "twitterIcon", companyName: "Twitter Inc", followers: "1M Followers", isFollowed: false),
-        Company(logoName: "appleIcon", companyName: "Apple Inc", followers: "1M Followers", isFollowed: false),
-        Company(logoName: "facebookIcon", companyName: "Facebook Inc", followers: "1M Followers", isFollowed: false),
-        Company(logoName: "microsoftIcon", companyName: "Microsoft Inc", followers: "1M Followers", isFollowed: false),
-        Company(logoName: "googleIcon", companyName: "Databricks", followers: "500K Followers", isFollowed: false),
-        Company(logoName: "dribbbleIcon", companyName: "Groq", followers: "200K Followers", isFollowed: false),
-        Company(logoName: "twitterIcon", companyName: "Deepgram", followers: "150K Followers", isFollowed: false),
-        Company(logoName: "appleIcon", companyName: "Airwallex", followers: "300K Followers", isFollowed: false),
-        Company(logoName: "facebookIcon", companyName: "AdsPower", followers: "100K Followers", isFollowed: false)
-    ]
+    
+    @Published private(set) var companies: [Company] = []
+    @Published private(set) var isLoading: Bool = false
+    
+    @Published private(set) var errorMessage: String?
+    
+    private let apiService = APIService.shared
+    
+    init() {
+        Task { await fetchCompanies() }
+    }
     
     func followCompany(_ company: Company) {
         if let index = companies.firstIndex(where: { $0.companyName == company.companyName }) {
             companies[index].isFollowed = !companies[index].isFollowed
+        }
+    }
+    
+    func fetchCompanies() async {
+        isLoading = true
+        defer { isLoading = false }
+        try? await Task.sleep(for: .seconds(2))
+        let result: APIResult<[Company]> = await apiService.fetch(endpoint: "https://dummyjson.com/c/5543-00ce-4928-b6e8")
+        
+        switch result {
+        case .success(let cmp):
+            companies = cmp
+            errorMessage = nil
+        case .failure(let message):
+            errorMessage = message
         }
     }
 }

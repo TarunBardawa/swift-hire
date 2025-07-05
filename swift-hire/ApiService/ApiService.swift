@@ -7,12 +7,9 @@
 
 import Foundation
 
-enum APIError: Error {
-    case invalidURL
-    case invalidResponse
-    case statusCode(Int)
-    case decodingError(Error)
-    case unknown(Error)
+enum APIResult<T: Decodable> {
+    case success(T)
+    case failure(String)
 }
 
 @MainActor
@@ -28,25 +25,31 @@ final class APIService {
         self.decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
-    func fetch<T: Decodable>(endpoint: String) async throws -> T {
+    func fetch<T: Decodable>(endpoint: String) async -> APIResult<T> {
+        
         guard let url = URL(string: endpoint) else {
-            throw APIError.invalidURL
-        }
-        
-        let (data, response) = try await session.data(from: url)
-        
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw APIError.invalidResponse
-        }
-        
-        guard (200...299).contains(httpResponse.statusCode) else {
-            throw APIError.statusCode(httpResponse.statusCode)
+            return .failure("Invalid URL")
         }
         
         do {
-            return try decoder.decode(T.self, from: data)
+            let (data, response) = try await session.data(from: url)
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                return .failure("Invalid server response")
+            }
+            
+            guard (200...299).contains(httpResponse.statusCode) else {
+                return .failure("Server error: \(httpResponse.statusCode)")
+            }
+            
+            do {
+                let decodedData = try decoder.decode(T.self, from: data)
+                return .success(decodedData)
+            } catch {
+                return .failure("Failed to decode response: \(error.localizedDescription)")
+            }
         } catch {
-            throw APIError.decodingError(error)
+            return .failure("Network request failed: \(error.localizedDescription)")
         }
     }
 }

@@ -25,3 +25,22 @@ struct Job: Identifiable, Codable {
         case tags
     }
 }
+
+
+struct HomeApiResponse: Codable {
+    let jobs: [Job]
+    let summary: Summary
+    
+    enum CodingKeys: String, CodingKey {
+        case jobs, summary
+    }
+}
+
+struct Summary: Codable {
+    
+    let remote: String
+    let fullTime: String
+    let partTime: String
+    
+}
+

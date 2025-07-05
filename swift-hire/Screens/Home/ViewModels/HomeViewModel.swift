@@ -20,6 +20,7 @@ class HomeViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     @Published private(set) var recentJobs: [Job] = []
+    @Published private(set) var summary: Summary?
     
     init() {
         
@@ -40,48 +41,34 @@ class HomeViewModel: ObservableObject {
     }
     
     func fetchUserProfile() async {
-        do {
-            isLoading = true
-            let user: UserProfile = try await apiService.fetch(endpoint: "https://dummyjson.com/c/b32d-04d9-4e6d-bf96")
+        isLoading = true
+        defer { isLoading = false }
+        
+        let result: APIResult<UserProfile> = await apiService.fetch(endpoint: "https://dummyjson.com/c/b32d-04d9-4e6d-bf96")
+        
+        switch result {
+        case .success(let user):
             profileManager.setUser(user)
             self.user = user
-            isLoading = false
-        } catch {
-            //                handleError(error)
+            errorMessage = nil
+        case .failure(let message):
+            errorMessage = message
         }
     }
     
     func getRecentJobs() async {
-        do {
-            isLoading = true
-            let jobs: [Job] = try await apiService.fetch(endpoint: "https://dummyjson.com/c/9e6d-424c-404e-ba24")
-            recentJobs = jobs
-            isLoading = false
-        } catch {
-            handleError(error)
-        }
-    }
-    
-    private func handleError(_ error: Error) {
-        isLoading = false
+        isLoading = true
+        defer { isLoading = false }
+        try? await Task.sleep(for: .seconds(2))
+        let result: APIResult<HomeApiResponse> = await apiService.fetch(endpoint: "https://dummyjson.com/c/08ae-f564-4b8e-8350")
         
-        if let apiError = error as? APIError {
-            switch apiError {
-            case .invalidURL:
-                errorMessage = "Invalid URL"
-            case .invalidResponse:
-                errorMessage = "Invalid server response"
-            case .statusCode(let code):
-                errorMessage = "Server error: \(code)"
-            case .decodingError(let error):
-                errorMessage = "Failed to decode response: \(error.localizedDescription)"
-            case .unknown(let error):
-                errorMessage = "Unknown error: \(error.localizedDescription)"
-            }
-        } else {
-            errorMessage = error.localizedDescription
+        switch result {
+        case .success(let res):
+            recentJobs = res.jobs
+            summary = res.summary
+            errorMessage = nil
+        case .failure(let message):
+            errorMessage = message
         }
-        
-        print("API Error: \(error)")
     }
 }
