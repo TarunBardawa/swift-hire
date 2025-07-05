@@ -15,18 +15,21 @@ struct Companies: View {
     ]
 
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(viewModel.companies) { company in
-                    CompanyCardView(company: company) { company in
-                        viewModel.followCompany(company)
+        NavigationStack {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 16) {
+                    ForEach(viewModel.companies) { company in
+                        CompanyCardView(company: company) { company in
+                            viewModel.followCompany(company)
+                        }
                     }
                 }
+                .padding()
+                .padding(.bottom, 30)
             }
-            .padding()
+            .background(Color(.systemGray5).edgesIgnoringSafeArea(.all))
+            .navigationBarColor(backgroundColor: Color(.systemGray5), titleColor: .text)
         }
-        .background(Color(.systemGray5).edgesIgnoringSafeArea(.all))
-        .navigationBarColor(backgroundColor: Color(.systemGray5), titleColor: .text)
     }
 }
 

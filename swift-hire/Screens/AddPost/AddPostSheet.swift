@@ -30,5 +30,10 @@ struct AddPostSheet: View {
             .padding(.top)
         }
         .padding()
+        .frame(maxWidth: .infinity, maxHeight: 400)
+        .background(Color.white)
+        .cornerRadius(20, corners: [.topLeft, .topRight])
+        .shadow(radius: 10)
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
